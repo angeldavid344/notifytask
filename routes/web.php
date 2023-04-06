@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,11 @@ use App\Http\Controllers\loginController;
 Route::view('/login', "login")->name('login');
 Route::view('/register', "register")->name('register');
 Route::view('/privada', "secret")->middleware('auth')->name('privada');
-Route::view('/tareas', "task")->name('task');
+Route::view('/tasks', "task")->middleware('auth')->name('tasks');
+
 
 Route::post('/validar-registro', [LoginController::class, 'register'])->name('validar-registro');
 Route::post('/inicia-sesion',[LoginController::class, 'login'])->name('inicia-sesion');
 Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
 
+Route::resource('/tasks', taskController::class);
