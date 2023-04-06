@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class loginController extends Controller
 {
@@ -14,17 +16,36 @@ class loginController extends Controller
     public function register(Request $request){
 
         //validar los datos
+        try {
 
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+            $validator=$request->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required|min:6',
+            ]);
+    
 
-        $user->save();
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
 
-        Auth::login($user);
+            
 
-        return redirect(route('privada'));
+            $user->save();
+
+            Auth::login($user);
+
+                
+
+            return redirect(route('privada'));
+
+        } catch (\Illuminate\Database\QueryException $ex) {
+            if ($ex->errorInfo[1] == 1062) {
+                return redirect()->back()->withErrors(['error' => 'El email ya existe.']);
+             }
+        }
+
 
     }
 
