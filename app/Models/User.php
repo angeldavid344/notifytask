@@ -23,6 +23,13 @@ class User extends Authenticatable
         'password',
     ];
 
+    //add rules for validation
+    public static $rules = [
+        'name' => 'required',
+        'email' => 'required|email',
+        'password' => 'required|min:6',
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *
