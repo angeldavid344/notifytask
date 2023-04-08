@@ -321,8 +321,15 @@ return [
         [
             'text'        => 'tareas',
             'url'         => '/tasks',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-tasks',
             'label'       => 2,
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Users',
+            'url'         => '/user',
+            'icon'        => 'fas fa-users',
+            'label'       => 3,
             'label_color' => 'success',
         ],
         ['header' => 'account_settings'],

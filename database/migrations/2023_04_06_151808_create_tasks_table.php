@@ -17,11 +17,9 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name_task');
             $table->integer('id_status');
-            $table->integer('id_user', 100);
+            $table->integer('id_user');
             $table->date('date_ini');
             $table->date('date_end');
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_status')->references('id')->on('status');
             $table->timestamps();
         });
     }
