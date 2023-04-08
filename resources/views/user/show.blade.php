@@ -1,11 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Task')
-
+@section('title', 'user')
 {{-- @extends('layouts.app') --}}
 
 @section('template_title')
-    {{ $task->name ?? "{{ __('Show') Task" }}
+    {{ $user->name ?? "{{ __('Show') User" }}
 @endsection
 
 @section('content')
@@ -15,34 +14,26 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Task</span>
+                            <span class="card-title">{{ __('Show') }} User</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('tasks.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('user.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Name Task:</strong>
-                            {{ $task->name_task }}
+                            <strong>Name:</strong>
+                            {{ $user->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Status:</strong>
-                            {{ $task->id_status }}
-                        </div>
-                         <div class="form-group">
-                            <strong>Id User:</strong>
-                            {{ $task->id_user }}
+                            <strong>Email:</strong>
+                            {{ $user->email }}
                         </div>
                         <div class="form-group">
-                            <strong>Date Ini:</strong>
-                            {{ $task->date_ini }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Date End:</strong>
-                            {{ $task->date_end }}
+                            <strong>Password:</strong>
+                            {{ $user->password }}
                         </div>
 
                     </div>
