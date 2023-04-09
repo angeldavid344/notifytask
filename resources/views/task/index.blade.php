@@ -1,16 +1,11 @@
 @extends('adminlte::page')
 
-@section('title', 'Task')
-
-@section('content_header')
-    <h1>Task</h1>
-@stop
-
-{{-- @extends('layouts.app')
+@section('title', 'task')
+{{-- @extends('layouts.app') --}}
 
 @section('template_title')
     Task
-@endsection --}}
+@endsection
 
 @section('content')
     <div class="container-fluid">
@@ -45,7 +40,8 @@
                                         <th>No</th>
                                         
 										<th>Name Task</th>
-										<th>Id Status</th>
+										{{-- <th>Id Status</th> --}}
+										<th>Description</th>
 										{{-- <th>Id User</th> --}}
 										<th>Date Ini</th>
 										<th>Date End</th>
@@ -59,7 +55,8 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $task->name_task }}</td>
-											<td>{{ $task->id_status }}</td>
+											{{-- <td>{{ $task->id_status }}</td> --}}
+											<td>{{ $task->description }}</td>
 											{{-- <td>{{ $task->id_user }}</td> --}}
 											<td>{{ $task->date_ini }}</td>
 											<td>{{ $task->date_end }}</td>
@@ -85,7 +82,6 @@
         </div>
     </div>
 @endsection
-
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop

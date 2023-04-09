@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $id
  * @property $name_task
  * @property $id_status
+ * @property $description
  * @property $id_user
  * @property $date_ini
  * @property $date_end
@@ -24,8 +25,7 @@ class Task extends Model
     
     static $rules = [
 		'name_task' => 'required',
-		'id_status' => 'required',
-		'id_user' => 'required',
+		'description' => 'required',
 		'date_ini' => 'required',
 		'date_end' => 'required',
     ];
@@ -37,7 +37,7 @@ class Task extends Model
      *
      * @var array
      */
-    protected $fillable = ['name_task','id_status','id_user','date_ini','date_end'];
+    protected $fillable = ['name_task','id_status','description','id_user','date_ini','date_end'];
 
 
 

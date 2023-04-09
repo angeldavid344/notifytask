@@ -22,63 +22,41 @@ use Illuminate\Database\Eloquent\Model;
 class user extends Model
 {
     
-    static $rules = [
-		'name' => 'required',
-		'email' => 'required',
-    'password' => 'required|min:6',
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
     ];
 
-    protected $perPage = 20;
-
-    
-
+    //add rules for validation
+    public static $rules = [
+        'name' => 'required',
+        'email' => 'required|email',
+        'password' => 'required|min:6',
+    ];
 
     /**
-     * Attributes that should be mass-assignable.
+     * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
-    protected $fillable = ['name','email'];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
     public function serPaswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
     }
-
-    public function register(Request $request){
-
-      //validar los datos
-      try {
-
-          $validator=$request->validate([
-              'name' => 'required',
-              'email' => 'required|email',
-              'password' => 'required|min:6',
-          ]);
-  
-
-          $user = new User();
-          $user->name = $request->name;
-          $user->email = $request->email;
-          $user->password = Hash::make($request->password);
-
-          
-
-          $user->save();
-
-          Auth::login($user);
-
-              
-
-          return redirect(route('privada'));
-
-      } catch (\Illuminate\Database\QueryException $ex) {
-          if ($ex->errorInfo[1] == 1062) {
-              return redirect()->back()->withErrors(['error' => 'El email ya existe.']);
-           }
-      }
-
-
-  }
-
 }
+
