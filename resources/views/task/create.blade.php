@@ -1,11 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Task')
-
-{{-- @section('content_header')
-    <h1>Task</h1>
-@stop --}}
-
+@section('title', 'task')
 {{-- @extends('layouts.app') --}}
 
 @section('template_title')

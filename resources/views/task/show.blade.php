@@ -1,7 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Task')
-
+@section('title', 'task')
 {{-- @extends('layouts.app') --}}
 
 @section('template_title')
@@ -29,12 +28,8 @@
                             {{ $task->name_task }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Status:</strong>
-                            {{ $task->id_status }}
-                        </div>
-                         <div class="form-group">
-                            <strong>Id User:</strong>
-                            {{ $task->id_user }}
+                            <strong>Description:</strong>
+                            {{ $task->description }}
                         </div>
                         <div class="form-group">
                             <strong>Date Ini:</strong>
