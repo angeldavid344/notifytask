@@ -24,6 +24,11 @@
                                   {{ __('Create New') }}
                                 </a>
                               </div>
+                              {{-- <div class="float-right">
+                                <a href="{{ route('avisoTasks') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('aviso') }}
+                                </a>
+                              </div> --}}
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -68,11 +73,18 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    @endforeach
+                                                    
+                                                    
                                                 </form>
+                                                
+
                                             </td>
                                         </tr>
-                                    @endforeach
+                                        
+                                        
                                 </tbody>
+                                
                             </table>
                         </div>
                     </div>
