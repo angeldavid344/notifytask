@@ -33,9 +33,9 @@ Route::post('/inicia-sesion',[LoginController::class, 'login'])->name('inicia-se
 Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
 
 Route::resource('/tasks', taskController::class);
-Route::resource('user', UserController::class);
+Route::resource('/user', UserController::class);
 
-Route::get('avisoTasks', function () {
+Route::get('/avisoTasks', function () {
     $correo = new avisoTask;
     Mail::to('angeldavidve@gmail.com')->send($correo);
 

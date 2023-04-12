@@ -24,11 +24,7 @@
                                   {{ __('Create New') }}
                                 </a>
                               </div>
-                              {{-- <div class="float-right">
-                                <a href="{{ route('avisoTasks') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('aviso') }}
-                                </a>
-                              </div> --}}
+                               
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -70,6 +66,9 @@
                                                 <form action="{{ route('tasks.destroy',$task->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('tasks.show',$task->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('tasks.edit',$task->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                        <a href="/avisoTasks " class="btn btn-primary btn-sm float-right"  data-placement="left"><i class="fas fa-retweet"></i>
+                                                          {{ __('recordatorio') }}
+                                                        </a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
