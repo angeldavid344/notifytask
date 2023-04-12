@@ -31,6 +31,7 @@
             {{ Form::text('date_end', $task->date_end, ['class' => 'form-control' . ($errors->has('date_end') ? ' is-invalid' : ''), 'placeholder' => 'Date End']) }}
             {!! $errors->first('date_end', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+       
 
     </div>
     <div class="box-footer mt20">
