@@ -22,7 +22,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Task extends Model
 {
-    
+
+    protected
+
     static $rules = [
 		'name_task' => 'required',
 		'description' => 'required',
@@ -39,6 +41,9 @@ class Task extends Model
      */
     protected $fillable = ['name_task','id_status','description','id_user','date_ini','date_end'];
 
-
+    public function setFechaVencimientoAttribute($value){
+      $date_end = Carbon::createFromFormat('Y/m/d H:i:s',$value);
+      $this->attributes['date_end'] = $date_end;
+    }
 
 }

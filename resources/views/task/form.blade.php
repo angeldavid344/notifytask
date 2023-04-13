@@ -23,13 +23,15 @@
         </div> --}}
         <div class="form-group">
             {{ Form::label('date_ini') }}
-            {{ Form::text('date_ini', $task->date_ini, ['class' => 'form-control' . ($errors->has('date_ini') ? ' is-invalid' : ''), 'placeholder' => 'Date Ini']) }}
-            {!! $errors->first('date_ini', '<div class="invalid-feedback">:message</div>') !!}
+        <input type="datetime-local" class="form-controller" name="date_ini" id="date_ini" required='true'>
+            {{-- {{ Form::select('date_ini', $task->date_ini, ['class' => 'form-control' . ($errors->has('date_ini') ? ' is-invalid' : ''), 'placeholder' => 'Date Ini']) }}
+            {!! $errors->first('date_ini', '<div class="invalid-feedback">:message</div>') !!} --}}
         </div>
         <div class="form-group">
             {{ Form::label('date_end') }}
-            {{ Form::text('date_end', $task->date_end, ['class' => 'form-control' . ($errors->has('date_end') ? ' is-invalid' : ''), 'placeholder' => 'Date End']) }}
-            {!! $errors->first('date_end', '<div class="invalid-feedback">:message</div>') !!}
+            <input type="datetime-local" class="form-controller" name="date_end" id="date_end" required='true'>
+            {{-- {{ Form::text('date_end', $task->date_end, ['class' => 'form-control' . ($errors->has('date_end') ? ' is-invalid' : ''), 'placeholder' => 'Date End']) }}
+            {!! $errors->first('date_end', '<div class="invalid-feedback">:message</div>') !!} --}}
         </div>
        
 
