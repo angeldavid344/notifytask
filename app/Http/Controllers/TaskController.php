@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Models\User;
+use App\Mail\MailWelcome;
+use Carbon\Carbon;
+use App\Jobs\Logger;
 
 /**
  * Class TaskController
@@ -18,10 +23,19 @@ class TaskController extends Controller
      */
     public function index()
     {
+        
+        $task = Task::find(30);
+        //   dd($task);
+         Mail::to('angeldavidve@hotmail.com')
+         ->send(new MailWelcome($task));
+        //    dd('envio');
+        // dd("Email is sent successfully.");
         $tasks = Task::paginate();
 
         return view('task.index', compact('tasks'))
             ->with('i', (request()->input('page', 1) - 1) * $tasks->perPage());
+
+            
     }
 
     /**
@@ -31,8 +45,12 @@ class TaskController extends Controller
      */
     public function create()
     {
-        $task = new Task();
+         $task = new Task();
+         
+
         return view('task.create', compact('task'));
+
+
     }
 
     /**
@@ -43,7 +61,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Task::$rules);
+        //  request()->validate(Task::$rules);
 
         $task = Task::create($request->all());
 
@@ -60,7 +78,6 @@ class TaskController extends Controller
     public function show($id)
     {
         $task = Task::find($id);
-        // return view('/avisoTasks', compact('task'));
          return view('task.show', compact('task'));
     }
 

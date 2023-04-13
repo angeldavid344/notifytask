@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Post;
+use Illuminate\Support\Facades\Storage;
+
 class PostCommand extends Command
 {
     /**
@@ -11,14 +13,14 @@ class PostCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'post:create';
+    protected $signature = 'PostCommand';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new post';
+    protected $description = 'Create a new task';
 
     /**
      * Execute the console command.
@@ -27,7 +29,9 @@ class PostCommand extends Command
      */
     public function handle()
     {
-        $post = new Post();
-        $post->save();
+        // $post = new Post();
+        // $post->save();
+        $text = "[" . date("Y-m-d H:i:s") . "]: hola mundo";
+        Storage::append("archivo.txt", $text);
     }
 }

@@ -18,8 +18,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        //creame un task scheduler para que me avise con avisoTask cuando la date_end del crud task sea igual a la fecha actual
-        $schedule->command('avisoTasks')->daily($tasks->date_end);
+        $schedule->command('PostCommand')->everyMinute();
 
     }
 
@@ -28,10 +27,14 @@ class Kernel extends ConsoleKernel
      *
      * @return void
      */
+    protected $commands = [
+    
+        Commands\PostCommand::class
+    ];
+
+
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
 
-        require base_path('routes/console.php');
     }
 }

@@ -10,6 +10,8 @@ use App\Http\Controllers\UserController;
 use App\Mail\avisoTask;
 use Illuminate\Support\Facades\Mail;
 
+use App\Jobs\Logger;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +22,7 @@ use Illuminate\Support\Facades\Mail;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::view('/login', "login")->name('login');
 Route::view('/register', "register")->name('register');
@@ -35,10 +38,12 @@ Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
 Route::resource('/tasks', taskController::class);
 Route::resource('/user', UserController::class);
 
-Route::get('/avisoTasks', function () {
-    $correo = new avisoTask;
+ Route::get('/avisoTasks', function () {
+     $correo = new avisoTask;
     Mail::to('angeldavidve@gmail.com')->send($correo);
 
     return view('secret');
-});
+ });
+
+
 
