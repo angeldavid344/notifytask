@@ -52,19 +52,21 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($tasks as $task)
-                                        <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $task->name_task }}</td>
-											{{-- <td>{{ $task->id_status }}</td> --}}
-											<td>{{ $task->description }}</td>
-											{{-- <td>{{ $task->id_user }}</td> --}}
-											<td>{{ $task->date_ini }}</td>
-											<td>{{ $task->date_end }}</td>
+                                    <tr>
+                                        <td>{{ ++$i }}</td>
+                                        
+                                        <td>{{ $task->name_task }}</td>
+                                        {{-- <td>{{ $task->id_status }}</td>  --}}
+                                        <td>{{ $task->description }}</td>
+                                        {{-- <td>{{ $task->id_user }}</td> --}}
+                                        <td>{{ $task->date_ini }}</td>
+                                        <td>{{ $task->date_end }}</td>
 
                                             <td>
                                                 <form action="{{ route('tasks.destroy',$task->id) }}" method="POST">
+                                                    
                                                     <a class="btn btn-sm btn-primary " href="{{ route('tasks.show',$task->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    @role('Admin')
                                                     <a class="btn btn-sm btn-success" href="{{ route('tasks.edit',$task->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                         <a href="/avisoTasks " class="btn btn-primary btn-sm float-right"  data-placement="left"><i class="fas fa-retweet"></i>
                                                           {{ __('recordatorio') }}
@@ -72,12 +74,12 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
-                                                    @endforeach
                                                     
+                                                    @endrole
                                                     
                                                 </form>
                                                 
-
+                                                @endforeach
                                             </td>
                                         </tr>
                                         

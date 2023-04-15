@@ -1,3 +1,4 @@
+@role('Admin')
 @extends('adminlte::page')
 
 @section('title', 'user')
@@ -75,10 +76,15 @@
                     </div>
                 </div>
                 {!! $users->links() !!}
+                
             </div>
         </div>
     </div>
 @endsection
+@endrole
+@role('User')
+    <p>usted no tiene permisos para ver este apartado, perdone</p>
+@endrole
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
