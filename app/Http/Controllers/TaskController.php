@@ -24,9 +24,9 @@ class TaskController extends Controller
     public function index()
     {
         
-        $task = Task::find(30);
+        $task = Task::find(35);
         //   dd($task);
-         Mail::to('angeldavidve@hotmail.com')
+          Mail::to('angeldavidve@hotmail.com')
          ->send(new MailWelcome($task));
         //    dd('envio');
         // dd("Email is sent successfully.");
