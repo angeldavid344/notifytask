@@ -57,12 +57,15 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, string $id): View
     {
-        $user = User::find($id);
+        $value = $request->session()->get('key');
+ 
+        // ...
+ 
+        $user = $this->users->find($id);
 
-        return view('user.show', compact('user'));
-    }
+        return view('user.profile', ['user' => $user]);    }
 
     /**
      * Show the form for editing the specified resource.

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name_task');
             $table->integer('id_status');
+            $table->text('descripcion');
             $table->integer('id_user');
             $table->date('date_ini');
             $table->date('date_end');

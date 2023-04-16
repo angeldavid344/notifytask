@@ -21,13 +21,26 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         
-        $task = Task::find(35);
-        //   dd($task);
-          Mail::to('angeldavidve@hotmail.com')
-         ->send(new MailWelcome($task));
+        
+
+        $input = $request-> all();
+         dump($input);
+         $tasks = Task::select('*')
+                ->join('users','users.id', '=', 'tasks.id_user')
+                ->where('id_user',$user.email) //TODO: 1 dinamic
+                ->get();
+         dump( ($tasks));
+         $user = User::all();
+         dump(($user));
+        
+        
+         //  dd(gettype ($user->email));
+        //    Mail::to($user->email)
+        //   ->send(new MailWelcome($task));
+        
         //    dd('envio');
         // dd("Email is sent successfully.");
         $tasks = Task::paginate();

@@ -9,11 +9,13 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\models\Task;
+use App\model\User;
 
 class MailWelcome extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $User;
     public $task;
 
     /**
@@ -21,9 +23,11 @@ class MailWelcome extends Mailable
      *
      * @return void
      */
+    
     public function __construct(Task $task)
     {
         $this->task = $task;
+        
     }
 
     public function build()
