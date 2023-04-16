@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\SessionController;
 
 use App\Mail\avisoTask;
 use Illuminate\Support\Facades\Mail;
@@ -45,5 +45,6 @@ Route::resource('/user', UserController::class);
     return view('secret');
  });
 
-
+Route::get('get-session',[SessionController::class,'getSession']);
+Route::get('store-session',[SessionController::class,'storeSession']);
 
