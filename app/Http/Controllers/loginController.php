@@ -17,7 +17,7 @@ class loginController extends Controller
 
         //validar los datos
         try {
-
+            
             $validator=$request->validate([
                 'name' => 'required',
                 'email' => 'required|email',
@@ -31,10 +31,11 @@ class loginController extends Controller
             $user->password = Hash::make($request->password);
 
             
-
+            
             $user->save();
 
             Auth::login($user);
+
 
                 
 
@@ -64,7 +65,14 @@ class loginController extends Controller
         if(Auth::attempt($credentials, $remember)){
 
             $request->session()->regenerate();
-
+            $user = User::select('*')
+                ->where('email',$request->email) //TODO: 1 dinamic
+                ->get();
+            // $request->session()->flash('id', $user[0]->id);
+            // $request->session()->keep(['id', $user[0]->id]);
+            session(['id'=> $user[0]->id]);
+            
+            // dd($request->session()->all());
             return redirect()->intended(route('privada'));
             
     } else {

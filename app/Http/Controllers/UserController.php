@@ -18,6 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        
         $users = User::paginate();
 
         return view('user.index', compact('users'))
@@ -31,6 +32,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        
         $user = new User();
         return view('user.create', compact('user'));
     }
@@ -59,12 +61,12 @@ class UserController extends Controller
      */
     public function show(Request $request, string $id): View
     {
+        
         $value = $request->session()->get('key');
- 
-        // ...
- 
+            // ...
+        
         $user = $this->users->find($id);
-
+        
         return view('user.profile', ['user' => $user]);    }
 
     /**

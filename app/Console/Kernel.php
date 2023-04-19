@@ -27,26 +27,18 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
 
 
+            $fecha_actual = date('Y-m-d 00:00:00');
+            $fecha_fin = date('Y-m-d 23:59:59');
 
-            // Obtener todas las tareas que han llegado a su fecha de vencimiento
-            // $tasks = Task::where('date_end', '<=', Carbon::now())->get();
-            // $id_user = User::getIdUser($param);
-            $tasks = Task::select('*')
-                ->join('users','users.id', '=', 'tasks.id_user')
-                ->where('id_user', '=',$id) //TODO: 1 dinamic
-                ->get();
-                // '=',1
-            // dump($tasks['email']);  
+            
+            $tasks = Task::where('date_end', '=', $fecha_actual)
+                ->where('date_end', '=', $fecha_fin)
+                ->dd();
 
             foreach ($tasks as $task) {
-            //     // Obtener el usuario asociado a la tarea
-            //     $user = $task->user;
-                // dump(gettype($task->email));
-                
-            //     // Enviar el correo electrónico
-                //Mail::to($user->email)->send(new MailWelcome($task));
+            
                 Mail::to($task->email)->send(new MailWelcome($task));
-                //dump('Schedule make: ');
+                // dump('Schedule make:');
             }
         })->everyMinute();
     }
@@ -63,3 +55,23 @@ class Kernel extends ConsoleKernel
 
     }
 }
+
+
+
+//     // Obtener el usuario asociado a la tarea
+            //     $user = $task->user;
+            //  dump(gettype($task->email));
+            //     // Enviar el correo electrónico
+            //Mail::to($user->email)->send(new MailWelcome($task));
+
+
+            // $tasks = Task::find($request->session()->get('date_end')); // Obtén el usuario que deseas filtrar
+            // $date_end = $tasks->date_end;
+            
+            // // $tasks = Task::whereDate('date_end', '=', now()->toDateString())->get();
+
+            //     $tasks = Task::select('*')
+            //      ->where('DATE(date_end)', '=',DATE(now())) //TODO: 1 dinamic
+            //      ->get();
+                // '=',1
+            // dump($tasks['email']); 
