@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\loginController;
+
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -23,18 +25,20 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        
-        
+        // dd($request->session()->get('id'));
 
-        $input = $request-> all();
-         dump($input);
-         $tasks = Task::select('*')
-                ->join('users','users.id', '=', 'tasks.id_user')
-                ->where('id_user',$user.email) //TODO: 1 dinamic
-                ->get();
-         dump( ($tasks));
-         $user = User::all();
-         dump(($user));
+            
+         $user = User::find($request->session()->get('id')); // Obtén el usuario que deseas filtrar
+         $id_user = $user->id;
+
+         $input = $request-> all();
+          $tasks = Task::select('*')
+             ->join('users','users.id', '=', 'tasks.id_user')
+             ->where('id_user' ,'=', $id_user) //TODO: 1 dinamic
+             ->get();
+        // dump( ($tasks));
+        //  $user = User::all();
+        //  dump(($user));
         
         
          //  dd(gettype ($user->email));

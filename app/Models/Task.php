@@ -39,7 +39,7 @@ class Task extends Model
      *
      * @var array
      */
-    protected $fillable = ['name_task','id_status','description','id_user','date_ini','date_end'];
+    protected $fillable = ['name_task','id_status','description','date_ini','date_end'];
 
     public function setFechaVencimientoAttribute($value){
       $date_end = Carbon::createFromFormat('Y/m/d H:i:s',$value);
