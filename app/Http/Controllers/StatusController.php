@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class statusController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.

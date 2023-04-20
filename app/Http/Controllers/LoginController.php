@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-class loginController extends Controller
+class LoginController extends Controller
 {
    
     public function register(Request $request){

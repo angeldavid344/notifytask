@@ -5,15 +5,21 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Mail;
+// use Illuminate\Support\Facades\Mail;
 use App\Models\Task;
 use App\Mail\MailWelcome;
 use App\Models\User;
+use App\Console\Commands\EnvioMail;
 
 
 
 class Kernel extends ConsoleKernel
 {
+
+    protected $commands = [
+        EnvioMail::class
+    ];
+
     /**
      * Define the application's command schedule.
      *
@@ -24,23 +30,7 @@ class Kernel extends ConsoleKernel
     {
         
 
-        $schedule->call(function () {
-
-
-            $fecha_actual = date('Y-m-d 00:00:00');
-            $fecha_fin = date('Y-m-d 23:59:59');
-
-            
-            $tasks = Task::where('date_end', '=', $fecha_actual)
-                ->where('date_end', '=', $fecha_fin)
-                ->dd();
-
-            foreach ($tasks as $task) {
-            
-                Mail::to($task->email)->send(new MailWelcome($task));
-                // dump('Schedule make:');
-            }
-        })->everyMinute();
+        $schedule->command('envio:mail')->everyMinute();
     }
 
 

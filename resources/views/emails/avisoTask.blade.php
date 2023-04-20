@@ -19,9 +19,9 @@
     <h1>correo de recordatorio</h1>
     <p>este es un correo con el fin de recordarle que tiene una tarea en curso que culminara pronto</p>
     
-    <p><strong>Tarea:<strong> {{$task->name_task}}</p>
-    <p><strong>Descripcion:<strong> {{$task->description}}</p>
-    <p><strong>Fecha de culminacion:<strong> {{$task->date_end}}</p>
+    <p><strong>Tarea:<strong></p>
+    <p><strong>Descripcion:<strong></p>
+    <p><strong>Fecha de culminacion:<strong></p>
     
 </body>
 </html>
