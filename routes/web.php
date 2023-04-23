@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\loginController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionController;
@@ -23,7 +23,7 @@ use App\Jobs\Logger;
 |
 */
 
-
+Route::view('/',"index")->name('taskweb');
 Route::view('/login', "login")->name('login');
 Route::view('/register', "register")->name('register');
 Route::view('/privada', "secret")->middleware('auth')->name('privada');
