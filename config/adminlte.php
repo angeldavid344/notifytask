@@ -332,6 +332,20 @@ return [
             'label'       => 3,
             'label_color' => 'success',
         ],
+        [
+            'text'        => 'Category',
+            'url'         => '/category',
+            'icon'        => 'fas fa-list',
+            'label'       => 4,
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Clientes',
+            'url'         => '/client',
+            'icon'        => 'fas fa-list',
+            'label'       => 5,
+            'label_color' => 'success',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

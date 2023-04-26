@@ -6,7 +6,7 @@
     <h1>Dashboard</h1>
 @stop
 
-@section('content')
+{{-- @section('content')
 <!doctype html>
 <html lang="en">
 
@@ -69,7 +69,39 @@
 </body>
 
 </html>
-@stop
+@stop --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1><?php 
+    // $cadena1 = '8::13::0';
+    // $cadena2 = '8:13';
+    //     $array_cadena1 = explode("::", $cadena1);
+
+    //     $array_cadena2 = explode(":", $cadena2);
+         
+    //     $hora = str_pad($array_cadena2[0], 2, '0', STR_PAD_LEFT); 
+    //     $minutos = str_pad($array_cadena2[1], 2, '0', STR_PAD_LEFT);
+ 
+    // echo $hora . ":" . $minutos;
+
+    $cadena1 = '8::13::0';
+    $cadena2 = '8:13';
+      $array_cadena1 = explode("::", $cadena1);
+      $array_cadena2 = explode(":", $cadena2);
+      $hora = $array_cadena2[0];
+      $minutos = $array_cadena2[1];
+echo $hora . ":" . $minutos;
+ 
+ ?></h1>
+</body>
+</html>
 
 
 @section('css')

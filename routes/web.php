@@ -6,6 +6,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClientController;
 
 use App\Mail\avisoTask;
 use Illuminate\Support\Facades\Mail;
@@ -30,6 +32,8 @@ Route::view('/privada', "secret")->middleware('auth')->name('privada');
 Route::view('/tasks', "task")->middleware('auth')->name('tasks');
 Route::view('/user', "user")->middleware('auth')->name('user');
 Route::view('/settings', "settings")->middleware('auth')->name('settings');
+Route::view('/category', "category")->middleware('auth')->name('category');
+Route::view('/client', "client")->middleware('auth')->name('client');
 
 Route::post('/validar-registro', [LoginController::class, 'register'])->name('validar-registro');
 Route::post('/inicia-sesion',[LoginController::class, 'login'])->name('inicia-sesion');
@@ -37,6 +41,8 @@ Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
 
 Route::resource('/tasks', taskController::class);
 Route::resource('/user', UserController::class);
+Route::resource('/category', CategoryController::class);
+Route::resource('/client', ClientController::class);
 
  Route::get('/avisoTasks', function () {
      $correo = new avisoTask;
