@@ -6,7 +6,7 @@
     <h1>Dashboard</h1>
 @stop
 
-@section('content')
+ @section('content')
 <!doctype html>
 <html lang="en">
 
