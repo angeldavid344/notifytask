@@ -20,5 +20,6 @@
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        <a href="{{ route('category.index') }}" class="btn btn-danger">{{ __('Cancel') }}</a>
     </div>
 </div>

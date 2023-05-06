@@ -4,13 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateTasksTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('tasks', function (Blueprint $table) {
@@ -18,20 +13,18 @@ return new class extends Migration
             $table->string('name_task');
             $table->integer('id_status');
             $table->text('descripcion');
-            $table->integer('id_user');
+            $table->unsignedBigInteger('id_user');
             $table->date('date_ini');
             $table->date('date_end');
             $table->timestamps();
         });
+
+        
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('tasks');
     }
+
 };

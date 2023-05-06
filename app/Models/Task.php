@@ -22,8 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Task extends Model
 {
-
-    protected
+   
 
     static $rules = [
 		'name_task' => 'required',
@@ -39,11 +38,24 @@ class Task extends Model
      *
      * @var array
      */
-    protected $fillable = ['name_task','id_status','description','date_ini','date_end'];
+    protected $fillable = ['name_task', 'id_status', 'description', 'id_user', 'date_ini', 'date_end'];
 
-    public function setFechaVencimientoAttribute($value){
-      $date_end = Carbon::createFromFormat('Y/m/d H:i:s',$value);
-      $this->attributes['date_end'] = $date_end;
+    public function getIntervalosDeTiempo()
+    {
+        $horasDisponibles = [];
+        $inicio = new DateTime('8:00:00');
+        $fin = new DateTime('18:00:00');
+        $intervalo = new DateInterval('PT2H'); // Intervalo de 2 horas
+        
+        // Crear los intervalos de tiempo
+        $intervalos = new DatePeriod($inicio, $intervalo, $fin);
+        
+        // Agregar cada intervalo al array de horas disponibles
+        foreach ($intervalos as $intervalo) {
+            $horasDisponibles[$intervalo->format('Y-m-d H:i:s')] = $intervalo->format('d/m/Y H:i:s');
+        }
+        
+        return $horasDisponibles;
     }
 
 }

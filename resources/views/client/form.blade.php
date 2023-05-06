@@ -33,13 +33,19 @@
         </div>
         <div class="form-group">
             {{ Form::label('sex') }}
-            {{ Form::text('sex', $client->sex, ['class' => 'form-control' . ($errors->has('sex') ? ' is-invalid' : ''), 'placeholder' => 'Sex']) }}
+            {{ Form::select('sex', ['M' => 'Masculino', 'F' => 'Femenino', 'ND' => 'No definido'], $client->sex, ['class' => 'form-control' . ($errors->has('sex') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione su sexo']) }}
             {!! $errors->first('sex', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+        {{-- <div class="form-group">
             {{ Form::label('birthdate') }}
             {{ Form::text('birthdate', $client->birthdate, ['class' => 'form-control' . ($errors->has('birthdate') ? ' is-invalid' : ''), 'placeholder' => 'Birthdate']) }}
             {!! $errors->first('birthdate', '<div class="invalid-feedback">:message</div>') !!}
+        </div> --}}
+        <div class="form-group">
+            {{ Form::label('birthdate') }}
+        <input type="date" class="form-controller" name="birthdate" id="birthdate" required='true'>
+            {{-- {{ Form::select('date_ini', $task->date_ini, ['class' => 'form-control' . ($errors->has('date_ini') ? ' is-invalid' : ''), 'placeholder' => 'Date Ini']) }}
+            {!! $errors->first('date_ini', '<div class="invalid-feedback">:message</div>') !!} --}}
         </div>
         <div class="form-group">
             {{ Form::label('email') }}
@@ -63,12 +69,13 @@
         </div>
         <div class="form-group">
             {{ Form::label('status') }}
-            {{ Form::text('status', $client->status, ['class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'placeholder' => 'Status']) }}
+            {{ Form::select('status', ['Pr' => 'Prospecto', 'Cl' => 'Cliente', 'Fn' => 'Finalizado'], $client->status, ['class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione un estado']) }}
             {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        <button type="submit" class="btn btn-primary" onclick="return confirm('¿Estás seguro de que deseas ejecutar esta accion?')">{{ __('Submit') }}</button>
+        <a href="{{ route('client.index') }}" class="btn btn-danger"onclick="return confirm('¿Estás seguro de que deseas cancelar esta accion?')">{{ __('Cancel') }}</a>
     </div>
 </div>

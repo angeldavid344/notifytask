@@ -13,6 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->foreign('id_user')->references('id')->on('users');
+        });
+
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name');
@@ -23,7 +27,7 @@ return new class extends Migration
             $table->string('nationality');
             $table->char('sex',2);
             $table->date('birthdate');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->integer('mobile number');
             $table->string('country');
             $table->string('home');

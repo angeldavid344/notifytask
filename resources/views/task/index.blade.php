@@ -20,7 +20,7 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('tasks.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('tasks.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left" onclick="return confirm('¿Estás seguro de que deseas crear un nuevo elemento?')">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -66,16 +66,16 @@
                                                 <form action="{{ route('tasks.destroy',$task->id) }}" method="POST">
                                                     
                                                     <a class="btn btn-sm btn-primary " href="{{ route('tasks.show',$task->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    @role('Admin')
-                                                    <a class="btn btn-sm btn-success" href="{{ route('tasks.edit',$task->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    {{-- @role('Admin') --}}
+                                                    <a class="btn btn-sm btn-success" href="{{ route('tasks.edit',$task->id) }}"onclick="return confirm('¿Estás seguro de que deseas editar este elemento?')"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                         <a href="/avisoTasks " class="btn btn-primary btn-sm float-right"  data-placement="left"><i class="fas fa-retweet"></i>
                                                           {{ __('recordatorio') }}
                                                         </a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este elemento?')"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                     
-                                                    @endrole
+                                                    {{-- @endrole --}}
                                                     
                                                 </form>
                                                 

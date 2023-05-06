@@ -11,7 +11,7 @@ use Illuminate\Queue\SerializesModels;
 use App\models\Task;
 use App\model\User;
 
-class MailWelcome extends Mailable
+class MailWelcome extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 

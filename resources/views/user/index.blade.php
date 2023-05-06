@@ -1,4 +1,4 @@
-@role('Admin')
+{{-- @role('Admin') --}}
 @extends('adminlte::page')
 
 @section('title', 'user')
@@ -26,7 +26,7 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('user.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('user.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left" onclick="return confirm('¿Estás seguro de que deseas crear un nuevo usuario?')">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -61,11 +61,11 @@
 
                                             <td>
                                                 <form action="{{ route('user.destroy',$user->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('user.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('user.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    {{-- <a class="btn btn-sm btn-primary " href="{{ route('user.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a> --}}
+                                                    <a class="btn btn-sm btn-success" href="{{ route('user.edit',$user->id) }}"onclick="return confirm('¿Estás seguro de que deseas editar este usuario?')"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -81,10 +81,10 @@
         </div>
     </div>
 @endsection
-@endrole
-@role('User')
+{{-- @endrole --}}
+{{-- @role('User')
     <p>usted no tiene permisos para ver este apartado, perdone</p>
-@endrole
+@endrole --}}
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
