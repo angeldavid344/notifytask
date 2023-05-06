@@ -31,19 +31,19 @@ class Client extends Model
 {
     
     static $rules = [
-		'first_name' => 'required',
-		'second_name' => 'required',
-		'Surname' => 'required',
-		'second_surname' => 'required',
-		'identification_document' => 'required',
-		'nationality' => 'required',
-		'sex' => 'required',
-		'birthdate' => 'required',
+		'first_name' => 'required|string',
+		'second_name' => 'nullable',
+		'Surname' => 'required|string',
+		'second_surname' => 'nullable',
+		'identification_document' => 'nullable',
+		'nationality' => 'nullable',
+		'sex' => 'nullable',
+		'birthdate' => 'nullable|date',
 		'email' => 'required',
-		'mobile_number' => 'required',
-		'country' => 'required',
-		'home' => 'required',
-		'status' => 'required',
+		'mobile_number' => 'nullable',
+		'country' => 'nullable',
+		'home' => 'nullable',
+		'status' => 'nullable',
     ];
 
     protected $perPage = 20;

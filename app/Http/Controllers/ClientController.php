@@ -42,14 +42,37 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        request()->validate(Client::$rules);
-
-        $client = Client::create($request->all());
+{
+    try {
+        // $validatedData = $request->validate([
+        //     'first_name' => 'required',
+        //     'surname' => 'required',
+        //     'address' => 'required',
+        //     'identification_document' => 'required',
+        //     'sex' => 'required',
+        //     'birthdate' => 'required',
+        //     'country' => 'required',
+        //     'home' => 'required',
+        //     'mobile_number' => 'required',
+        //     'email' => 'required|email|unique:clients,email',
+        // ]);
+        $input = $request->all();
+        // dump('var');
+        // dd($input);
+        $client = Client::create($input);
 
         return redirect()->route('client.index')
             ->with('success', 'Client created successfully.');
+    } catch (\Illuminate\Database\QueryException $ex) {
+        if ($ex->errorInfo[1] == 1062) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors(['email' => 'El correo electrónico ya existe']);
+        } else {
+            throw $ex;
+        }
     }
+}
 
     /**
      * Display the specified resource.
