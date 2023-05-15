@@ -14,8 +14,9 @@ class CreateTasksTable extends Migration
             $table->integer('id_status');
             $table->text('descripcion');
             $table->unsignedBigInteger('id_user');
-            $table->date('date_ini');
-            $table->date('date_end');
+            $table->integer('id_client');
+            $table->datetime('date_ini');
+            $table->datetime('date_end');
             $table->timestamps();
         });
 

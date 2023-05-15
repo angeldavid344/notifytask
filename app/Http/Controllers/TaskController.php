@@ -119,11 +119,21 @@ class TaskController extends Controller
         $user_id = auth()->id(); // Obtiene el ID del usuario autenticado
         $task = new Task($request->all());
         $task->id_user = $user_id;
-        $task->save();
-        // $task = Task::create($request->all());
 
-        return redirect()->route('tasks.index')
-            ->with('success', 'Task created successfully.');
+        $user = User::findOrFail($user_id);
+
+        if ($user->hours_remaining < 2) {
+            // dd($user->hours_remaining);
+            return redirect()->back()->with('hours_remaining_error', 'Usted no tiene suficientes horas para reservar esta sala por este mes, si quiere más pague un extra o espere el próximo mes');
+        }
+
+    $task->save();
+
+    $user->hours_remaining -= 2;
+    $user->save();
+
+    return redirect()->route('tasks.index')->with('success', 'Tarea creada exitosamente.');
+    
     }
 
     /**
@@ -134,8 +144,12 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        $task = Task::find($id);
-         return view('task.show', compact('task'));
+        $task = Task::findOrFail($id);
+
+        $user = User::find($task->id_user);
+        dd($user);
+
+    return view('tasks.show', compact('task', 'user'));
     }
 
     /**

@@ -36,7 +36,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('date_end') }}
-            <input type="datetime-local" class="form-controller" name="date_end" id="date_end" value="{{ $currentDateTime }}" required='true'>
+            <input type="datetime-local" class="form-controller" name="date_end" id="date_end" value="{{ $currentDateTime }}" step="7200" required>
         </div>
 
         {{-- <div class="form-group">

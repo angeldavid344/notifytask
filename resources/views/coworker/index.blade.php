@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'category')
+@section('title', 'Coworker')
 
 @section('template_title')
-    Category
+    Coworker
 @endsection
 
 @section('content')
@@ -15,11 +15,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Category') }}
+                                {{ __('Coworker') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('category.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('coworker.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -38,29 +38,27 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Name</th>
-										<th>Category</th>
-										<th>Status</th>
+										<th>User Id</th>
+										<th>Contrato Id</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($categories as $category)
+                                    @foreach ($coworkers as $coworker)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $category->name }}</td>
-											<td>{{ $category->category }}</td>
-											<td>{{ $category->status }}</td>
+											<td>{{ $coworker->user_id }}</td>
+											<td>{{ $coworker->contrato_id }}</td>
 
                                             <td>
-                                                <form action="{{ route('category.destroy',$category->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('category.show',$category->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('category.edit',$category->id) }}" ><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <form action="{{ route('coworker.destroy',$coworker->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('coworker.show',$coworker->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('coworker.edit',$coworker->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" ><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -70,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $categories->links() !!}
+                {!! $coworkers->links() !!}
             </div>
         </div>
     </div>

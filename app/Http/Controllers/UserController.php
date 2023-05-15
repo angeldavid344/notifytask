@@ -49,6 +49,9 @@ class UserController extends Controller
 
         $user = User::create($request->all());
 
+        $user = User::findOrFail($user_id); // Obtener el usuario por ID
+        $hours_assigned = $user->hours_assigned; // Acceder al campo hours_assigned del usuario
+
         return redirect()->route('user.index')
             ->with('success', 'User created successfully.');
     }

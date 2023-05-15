@@ -32,6 +32,8 @@ return new class extends Migration
             $table->string('country');
             $table->string('home');
             $table->char('state',2);
+            
+
 
             $table->timestamps();
         });
