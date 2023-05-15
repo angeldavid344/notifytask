@@ -1,10 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'task')
-{{-- @extends('layouts.app') --}}
+@section('title', 'Reserva')
 
 @section('template_title')
-    {{ __('Create') }} Task
+    {{ __('Create') }} Reserva
 @endsection
 
 @section('content')
@@ -16,17 +15,13 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} Task</span>
+                        <span class="card-title">{{ __('Create') }} Reserva</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('tasks.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('reserva.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
-                            @if(session('hours_remaining_error'))
-                                     <div class="alert alert-danger">
-                                     {{ session('hours_remaining_error') }}
-                     </div>
-                            @endif
-                            @include('task.form')
+
+                            @include('reserva.form')
 
                         </form>
                     </div>

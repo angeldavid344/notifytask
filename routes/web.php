@@ -8,6 +8,13 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ContratoController;
+use App\Http\Controllers\CoworkerController;
+use App\Http\Controllers\EspacioController;
+use App\Http\Controllers\ReservaController;
+
+
+
 
 use App\Mail\avisoTask;
 use Illuminate\Support\Facades\Mail;
@@ -34,6 +41,13 @@ Route::view('/user', "user")->middleware('auth')->name('user');
 Route::view('/settings', "settings")->middleware('auth')->name('settings');
 Route::view('/category', "category")->middleware('auth')->name('category');
 Route::view('/client', "client")->middleware('auth')->name('client');
+Route::view('/contrato', "contrato")->middleware('auth')->name('contrato');
+Route::view('/coworker', "coworker")->middleware('auth')->name('coworker');
+Route::view('/espacio', "espacio")->middleware('auth')->name('espacio');
+Route::view('/reserva', "reserva")->middleware('auth')->name('reserva');
+
+
+
 
 Route::post('/validar-registro', [LoginController::class, 'register'])->name('validar-registro');
 Route::post('/inicia-sesion',[LoginController::class, 'login'])->name('inicia-sesion');
@@ -43,6 +57,11 @@ Route::resource('/tasks', taskController::class);
 Route::resource('/user', UserController::class);
 Route::resource('/category', CategoryController::class);
 Route::resource('/client', ClientController::class);
+Route::resource('/contrato', ContratoController::class);
+Route::resource('/coworker', CoworkerController::class);
+Route::resource('/espacio', EspacioController::class);
+Route::resource('/reserva', ReservaController::class);
+
 
  Route::get('/avisoTasks', function () {
      $correo = new avisoTask;
